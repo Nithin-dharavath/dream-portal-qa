@@ -1,0 +1,346 @@
+:root {
+    --primary-color: #6366f1;
+    --text-color: #f8fafc;
+    --bg-start: #0f172a;
+    --bg-end: #1e293b;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 3rem;
+    width: 95%;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+p {
+    color: rgba(248, 250, 252, 0.8);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.loading-animation {
+    margin-bottom: 2rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(99, 102, 241, 0.2);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 2rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Update button container and button styles */
+.button-container {
+    position: relative;
+    z-index: 2;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Update visibility classes */
+.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Update button styles */
+#dreamButton {
+    background: #6366f1;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: none; /* Hide by default */
+    opacity: 0;
+    visibility: hidden;
+}
+
+#dreamButton:hover {
+    transform: translateY(-2px);
+    background: #4f46e5;
+    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.8);
+}
+
+#dreamButton.show {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: buttonAppear 0.5s ease-out forwards;
+}
+
+@keyframes buttonAppear {
+    0% { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.dream-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, rgba(248, 250, 252, 0.8), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, rgba(248, 250, 252, 0.8), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50px 160px, rgba(248, 250, 252, 0.8), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, rgba(248, 250, 252, 0.8), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 130px 80px, rgba(248, 250, 252, 0.8), rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: twinkle 4s infinite;
+    opacity: 0.3;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+}
+
+/* Update Table Styles */
+table {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+th {
+    background: rgba(99, 102, 241, 0.2);
+    color: white;
+    font-weight: 500;
+    padding: 1.2rem;
+    text-align: left;
+    letter-spacing: 0.5px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+td {
+    padding: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Add some spacing between columns */
+th:not(:last-child),
+td:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    th, td {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .content-wrapper {
+        width: 95%;
+        margin: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    th, td {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Add these new styles */
+.main-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+}
+
+.main-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dream-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.dream-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #6366f1;
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+}
+
+.floating-orbs {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.5;
+    animation: floatOrb 20s infinite ease-in-out;
+}
+
+.orb1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.2), transparent 70%);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb2 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.2), transparent 70%);
+    bottom: 20%;
+    right: 15%;
+    animation-delay: -5s;
+}
+
+.orb3 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at center, rgba(79, 70, 229, 0.2), transparent 70%);
+    top: 50%;
+    left: 50%;
+    animation-delay: -10s;
+}
+
+@keyframes floatOrb {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(50px, -30px) scale(1.1);
+    }
+    50% {
+        transform: translate(0, 50px) scale(0.9);
+    }
+    75% {
+        transform: translate(-50px, -20px) scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+} 
