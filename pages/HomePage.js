@@ -3,8 +3,8 @@ class HomePage {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto('/');
+  async goto(options = {}) {
+    await this.page.goto('', { waitUntil: 'domcontentloaded', ...options });
   }
 
   getLoadingSpinner() {
