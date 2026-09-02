@@ -9,10 +9,16 @@ class DreamsTotalPage {
     const counts = {};
     for (let i = 0; i < count; i++) {
       const cells = rows.nth(i).locator('td');
-      const type = await cells.nth(0).textContent();
-      const value = await cells.nth(1).textContent();
-      const key = type.trim().toLowerCase().replace(' ', '');
-      counts[key] = parseInt(value.trim(), 10);
+      const typeRaw = await cells.nth(0).textContent();
+      const valueRaw = await cells.nth(1).textContent();
+      const normalized = typeRaw.trim().toLowerCase();
+      let key;
+      if (normalized.includes('good')) key = 'good';
+      else if (normalized.includes('bad')) key = 'bad';
+      else if (normalized === 'total dreams') key = 'total';
+      else if (normalized.includes('recurring')) key = 'recurring';
+      else key = normalized.replace(/\s+/g, '');
+      counts[key] = parseInt(valueRaw.trim(), 10);
     }
     return {
       good: counts.good,
