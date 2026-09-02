@@ -25,6 +25,10 @@ test.describe('Home page loading lifecycle', () => {
     await test.step('My Dreams button is visible', async () => {
       await expect(homePage.getDreamButton()).toBeVisible();
     });
+
+    await test.step('Capture success screenshot: home page loaded', async () => {
+      await page.screenshot({ path: 'screenshots/home-loaded.png', fullPage: true });
+    });
   });
 });
 

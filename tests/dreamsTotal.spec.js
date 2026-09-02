@@ -155,6 +155,10 @@ test.describe('Dreams Total — Dual Validation', () => {
 
       await expect(derived.recurringNames).toEqual(SPEC_RECURRING_NAMES);
     });
+
+    await test.step('Capture success screenshot: total summary', async () => {
+      await totalTab.screenshot({ path: 'screenshots/total-summary.png', fullPage: true });
+    });
   });
 });
 

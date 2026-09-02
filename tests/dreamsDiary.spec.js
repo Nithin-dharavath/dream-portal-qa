@@ -47,5 +47,9 @@ test.describe('Dreams Diary data validity', () => {
         expect(days).toBeGreaterThanOrEqual(0);
       }
     });
+
+    await test.step('Capture success screenshot: diary table', async () => {
+      await page.screenshot({ path: 'screenshots/diary-table.png', fullPage: true });
+    });
   });
 });
