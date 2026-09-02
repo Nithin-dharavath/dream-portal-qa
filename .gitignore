@@ -7,4 +7,8 @@ node_modules/
 /playwright/.auth/
 .env
 allure-results/
-screenshots/
+allure-report/
+
+# Python / local tooling
+venv/
+__pycache__/
